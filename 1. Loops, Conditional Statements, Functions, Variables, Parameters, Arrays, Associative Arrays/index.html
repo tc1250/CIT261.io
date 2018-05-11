@@ -1,13 +1,232 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Entrance Page</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <h1>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h1>
 
+<head>
+    <title>Logic</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
 
-    </body>
+<body>
+    <div class="header">
+        <h2>Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays</h2>
+        <p>
+            <a href=../index.html>Home</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Loops</h3>
+                <p>Loops perform the same logic for either a set number of iterations (for loops) or until a condition is met
+                    (while loops).</p>
+                <figure>
+                    <figcaption>For Loop Example</figcaption>
+                    <pre><code>
+                    for (var i = 0; i < //specific length; i++) {
+                        //do repeated logic here
+                    }
+                    </code></pre>
+                </figure>
+                <figure>
+                    <figcaption>While Loop Example</figcaption>
+                    <pre><code>
+                    var finished = false
+                    while (finished) {
+                        //do repeated logic here
+                        //do a check to see if conditions for loop are done
+                        if(//logic to check if the loop is done){
+                            finished=true
+                        }
+                    }
+                    </code></pre>
+                </figure>
+                <hr>
+                <h4>Loops in action</h4>
+                <figure>
+                    <figcaption>Loop Ouput</figcaption>
+                    <pre><code id="loopOutput">
+                    </code></pre>
+                </figure>
+                <button onclick="loops()">Try a Loop</button>
+                <button onclick="resetLoops()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Conditional Statements</h3>
+                <p>Conditional statements test if a condition is true. If the condition is true, the code inside the brackets
+                    is executed. If it's not, it will proceed to the else statement, or simply continue executing code after
+                    the if statement in the absence of an else condition.</p>
+                <figure>
+                    <figcaption>Conditional Example</figcaption>
+                    <pre><code>
+                    var isTrue = true;
+                    if(isTrue){
+                        //code in this block would get executed because isTrue actually is true
+                    }
+                    isTrue = false;
+                    if(isTrue){
+                        //code in this block would not execute because the condition (isTrue) is now false
+                    }
+                    </code></pre>
+                </figure>
+                <hr>
+                <figure>
+                    <figcaption>Conditional Output</figcaption>
+                    <pre><code id="conditionalOutput">
+                    </code></pre>
+                </figure>
+                <p>Select a button, then click "Try a Conditional"</p>
+                <input type="radio" name="1" value="True">True
+                <input type="radio" name="1" value="False">False
+                <br/>
+                <button onclick="conditional()">Try a Conditional</button>
+                <button onclick="resetConditional()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Functions</h3>
+
+                <p>A function performs a specic task on command. It prevents writing the same code over and over when a task
+                    needs to be repeated by different parts of the program.</p>
+                <figure>
+                    <figcaption>Function Example</figcaption>
+                    <pre><code>
+                        function myFunction () {
+                            //do logic here
+                        }
+                        //each time myFunction() is called, the logic inside of it will be run
+                    </code></pre>
+                </figure>
+                <hr>
+                <figure>
+                    <figcaption>Function Output</figcaption>
+                    <pre><code id="functionOutput">
+                    </code></pre>
+                </figure>
+                Input a Value: <input type="text" id="functionInput" size="30">
+                <button onclick="myFunction()">Try a Function</button>
+                <button onclick="resetFunction()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Variables</h3>
+                <p>A variable is a container for storing values.</p>
+                <figure>
+                    <figcaption>Variable Example</figcaption>
+                    <pre><code>
+                        var myVariable = "toast";
+                        var myvariable += " and butter";
+                        //Printing after the first data assignment would result in "toast" being shown in the console, 
+                        and printing after the 2nd assignment would result in "toast and butter" showing up in the console
+                    </code></pre>
+                </figure>
+                <hr>
+                <figure>
+                    <figcaption>Variable Output</figcaption>
+                    <pre><code id="variableOutput">
+                        See Conditional Example for an example of variable use, and see Function Output for a demonstration of variable use.
+                    </code></pre>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Parameters</h3>
+                <p>Parameters are variables that we pass to functions. The functions will do work based on the value of the parameter(s) that we send them.</p>
+                <figure>
+                    <figcaption>Parameters Example</figcaption>
+                    <pre><code>
+                        function myFunction(parameter){
+                            if(parameter == //somevalue){
+                                //do something
+                            }
+                        }
+                    </code></pre>
+                </figure>
+                <hr>
+                <p>This will act the same as the Functions Example, but it will pass the input value to the setting funciton as a parameter.</p>
+                <figure>
+                    <figcaption>Parameters Output</figcaption>
+                    <pre><code id="parameterOutput">
+                    </code></pre>
+                </figure>
+                Input a Value: <input type="text" id="parameterInput" size="30">
+                <button onclick="parameter()">Try a Function</button>
+                <button onclick="resetParameter()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Arrays</h3>
+                <p>An array is a collection of data. The value of the data can be recalled by using the notation myArrayName[//number of the element in the array]. Arrays are often used in for loops in order to return multiple bits of data from input or a function.</p>
+                <figure>
+                    <figcaption>Arrays Example</figcaption>
+                    <pre><code>
+                        var myArray= new Array(1,2,"apple", "call");
+                        myArray[2] would return "apple", because arrays start counting at 0 instead of 1. 
+                    </code></pre>
+                </figure>
+                <hr>
+                <figure>
+                    <figcaption>Arrays Output</figcaption>
+                    <pre><code id="arrayOutput">
+                    </code></pre>
+                </figure>
+                <p>The input for this function is [apple,dog,1,5.4]</p>
+                <button onclick="array()">Try a Function</button>
+                <button onclick="resetArray()">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Associative Arrays</h3>
+                <p>In most programming languages, associative arrays are key:value pairs stored in an array. Example, I can store pet:rufus as a key value pair in a pets array, and when I call pets[pet], I'll get rufus as the return value. However, in JavaScript, when key value pairs are used, the array actually becomes an object, so an object can be created that acts as an associative array, but it is not truly an array in JavaScript, it is an object.</p>
+                <figure>
+                    <figcaption>Associative Arrays Example</figcaption>
+                    <pre><code>
+                        var myObj = {"Tyler":30,"Hannah":26,"Samuel":3,"Aaron":1};
+                        //This will act, for all intents and purposes, like an associative array
+                        //Just remember to use the object {} when creating it, and not the array []
+                        //Values would be returned like this: myObj["Tyler"], which would return 30
+                        //Print out all of the values:
+                        for(let person in myObj)
+                        {
+                            document.getElementById("associativeArrayOutput").innerHTML+= person + "=" + myObj[person];
+                        }
+                    </code></pre>
+                </figure>
+                <hr>
+                <figure>
+                    <figcaption>Associative Arrays Output</figcaption>
+                    <pre><code id="associativeArrayOutput">
+                    </code></pre>
+                </figure>
+                <p>The input for this function is {"Tyler":30,"Hannah":26,"Samuel:3","Aaron":1}</p>
+                <button onclick="associativeArray()">Try a Function</button>
+                <button onclick="resetAssociativeArray()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Created by Tyler Christensen 2018</div>
+    <script src="loops.js"></script>
+</body>
+
 </html>
