@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>JavaScript Events</h2>
+        <p>
+            <a href=../index.html>Home</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>HTML Events</h3>
+                <p>HTML events are things that happen on an HTML page. JavaScript can react to these events. HTML events can
+                    be initiated by the browser or the user.</p>
+                <p>Common events include: onchange, onclick, onmouseover, onmouseout, onkeydown, onload, and on mobile, touchstart
+                    and touchend are important when considering touch events.</p>
+                <figure>
+                    <figcaption>How to fire JS on events:Inline</figcaption>
+                    <pre><code>
+                        //This calls JS from the HTML page. It's the oldest method, and is not encouraged anymore.
+                        //This calls someFunction() when the button is clicked
+                        button onclick="someFunction()"
+                    </code></pre>
+                </figure>
+                <figure>
+                    <figcaption>How to fire JS on events:JavaScript</figcaption>
+                    <pre><code>
+                        //This method listens for the event and fires it all from JavaScript
+                        var btn = document.getElementById("button-id");
+
+                        btn.onclick = function(){
+                            //logic here
+                        }
+                    </code></pre>
+                </figure>
+                <figure>
+                    <figcaption>How to fire JS on events:JavaScript Event Listener</figcaption>
+                    <pre><code>
+                        //This method adds a listener which fires the JavaScript when it hears the event
+                        //This is the newest and most flexible of the methods
+                        var btn = document.getElementById("button-id");
+
+                        function someFunction(){
+                            //logic here
+                        }
+
+                        btn.addEventListener('click',someFunction());
+                    </code></pre>
+                </figure>
+                <hr>
+                <h3>Example of events (use mobile or developer mode to emulate mobile for touches)</h3>
+                <figure>
+                <figcaption>Touch me or hover with mouse</figcaption>
+                    <pre><code id="touchme">
+
+                        
+
+
+
+
+
+                    </code></pre>
+                </figure>
+                <figure>
+                    <figcaption>Status</figcaption>
+                    <pre><code id="status"></code></pre>
+                </figure>
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Created by Tyler Christensen 2018</div>
+    <script src="events.js"></script>
+</body>
+
+</html>
