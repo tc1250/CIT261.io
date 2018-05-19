@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Objects</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>Object Creation Functions, Inheritance, Properties, Methods, Instantiation</h2>
+        <p>
+            <a href=../index.html>Home</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Object Creation Functions</h3>
+                <p>Objects are like variables, except that they contain other variables. They are like Associative Arrays, with
+                    names for each piece of data stored in them. Objects can contain functions as well as variables. An object
+                    can be created using curly brackets, or by using a function. </p>
+                <figure>
+                    <figcaption>Creating an object with curly brackets</figcaption>
+                    <pre><code>var myObject = {firstName:"Tyler",lastName:"Christensen",major:"CIT",class:"senior",loveOfCIT261:"Below-Average"}</code></pre>
+                </figure>
+                <figure>
+                    <figcaption>Creating an object with a function (AKA:constructor)</figcaption>
+                    <pre><code>function myObject(firstName, lastName,major,class,loveOfCIT261){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.major = major;
+    this.class = class;
+    this.loveOfCIT261 = loveOfCIT261;
+}</code></pre>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Instantiation</h3>
+                <p>Instantiation is creating an object from an object constructor. This creates a named instance of the object
+                    with unique values for each property in the object definition. After creation, the object's properties
+                    and methods can be accessed using the object's name.property.</p>
+                <figure>
+                    <figcaption>Creating an object with curly brackets</figcaption>
+                    <pre><code>//Using the object constructor above:
+var tyler = myObject("Tyler","Christensen","CIT","Senior","Below-Average");</code></pre>
+                </figure>
+                <p>This creates the same object as the first example, but we've created and used an object constructor which
+                    can be used to create other similar objects. </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Inheritance</h3>
+
+                <p>Typical programming languages use classes to define an object, and when defining a new object class, you
+                    can say that it inherits from another class. This is called class-based inheritance. JavaScript uses
+                    a method called prototype-based to inherit properties, which differs from the class-based inheritance.
+                    Every object in JS has a prototype object attached to it that defines what methods are inheritable and
+                    what it inherits from.</p>
+                <figure>
+                    <figcaption>Adding an inheritable method to an object</figcaption>
+                    <pre><code>myObject.prototype.greeting = function(){
+    //code goes here
+}</code></pre>
+                </figure>
+                <p>This greeting function, since it is defined in the myObject prototype will now be inherited by objects that inherit from myObject.</p>
+                <figure>
+                    <figcaption>Adding an inheritable method to an object</figcaption>
+                    <pre><code>function InheritedObject(firstName, lastName,major,class,loveOfCIT261,newProperty){
+    myObject.call(this,firstName, lastName,major,class,loveOfCIT261);
+    this.newProperty = newProperty;
+}</code></pre>
+                </figure>
+                <p>This new InheritedObject should now have all properties from myObject's constructor, and it will inherit all methods defined in the prototype of myObject.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Properties</h3>
+                <p>Properties of an object are the variables stored in the object. Above, in the first example, firstName and lastName are properties of myObject.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Methods</h3>
+                <p>Methods are functions that are stored in an object. Methods are inheritable if they are defined using the .prototype notation on the object i.e. myObject.prototype.functionName. The greeting function above is an example of a method, a function inside of an object.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Objects Demo</h3>
+                <figure id="outputClick">
+                    <figcaption>Output (click me!)</figcaption>
+                    <pre><code id="objectOutput"></code></pre>
+                </figure>
+                <button onclick="reset()">Reset</button>
+                <p>This non-dynamic example pre-fills a Person object with some of my information (name and occupation), and then a Student object inherits from the Person object. In the JS, I create a Student object named tyler, and call the greeting() function on the Student object that it inherited from the Person object.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">Created by Tyler Christensen 2018</div>
+    <script src="js.js"></script>
+</body>
+
+</html>
