@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', startup, false);
 
 //setting up localstorage stuff
 var htmlElement = document.getElementsByClassName('card');
-var pElement = document.querySelectorAll('p');
 
 //forms
 var bgColorForm = document.getElementById('bgcolor');
@@ -72,9 +71,7 @@ function setValues() {
     for (let element of htmlElement) {
         element.style.backgroundColor=currentColor;
     }
-    for (let p of pElement) {
-        p.style.fontFamily = currentFont;
-    }
+    document.body.style.fontFamily = currentFont;
 
     if ('name' in storageItems && storageItems.name.length > 0) {
         document.getElementById('nameElement').innerHTML = '<br/>Welcome back, ' + storageItems['name'];
