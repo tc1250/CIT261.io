@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Local Storage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</h2>
+        <p>
+            <a href=../index.html>Home</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Localstorage</h3>
+                <p>Localstorage is a perisistent storage object, stored in the browser, that lasts between sessions. This allows
+                    data to be stored and retrieved the next time the user opens the page. Here we will store the color and
+                    font as simple data, and then we will store the other values as an array/object (because they are so
+                    similar in JS). A few catches: all values must be stored as key/value pairs, and all values must be strings.
+                    This is where JSON.stringify will come in handy.</p>
+                <form>
+                    <div>
+                        <label for="bgcolor">Choose background color:</label>
+                        <select id="bgcolor">
+                            <option value="#FE0404">#FE0404</option>
+                            <option value="#42FE04">#42FE04</option>
+                            <option value="#0461FE">#0461FE</option>
+                            <option value="#FE04FD">#FE04FD</option>
+                            <option value="#F7FE04">#F7FE04</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="font">Choose font style:</label>
+                        <select id="font">
+                            <option value="sans-serif" selected="">Sans-serif</option>
+                            <option value="serif">Serif</option>
+                            <option value="Courier New">Courier New</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="name">Enter name:</label>
+                        <input id="name">
+                    </div>
+                    <div>
+                        <label for="age">Enter age:</label>
+                        <input id="age">
+                    </div>
+                    <div>
+                        <label for="occupation">Enter occupation:</label>
+                        <input id="occupation">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='container'>
+            <div class='card'>
+                <div id="nameElement"></div>
+                <div id="ageElement"></div>
+                <div id="occupationElement"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Created by Tyler Christensen 2018</div>
+    <script src="js.js"></script>
+</body>
+
+</html>

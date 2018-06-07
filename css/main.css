@@ -83,10 +83,22 @@ body {
     width: 16%;
 }
 
-.complete {
+.skilled {
     font-size: larger;
     font-weight: bold;
     color: green; 
+}
+
+.working {
+    font-size: larger;
+    font-weight: bold;
+    color: lightgreen; 
+}
+
+.basic {
+    font-size: larger;
+    font-weight: bold;
+    color: lightcoral; 
 }
 
 .incomplete {
@@ -129,4 +141,17 @@ pre code{
 pre {
     padding:10px;
     font-size:0.8em;
+}
+
+.focus{
+    -webkit-transform : scale(1.005); 
+    transform : scale(1.005); 
+    outline : none;
+    border-color : #9ecaed;
+    box-shadow : 0 0 10px #9ecaed;  
+}
+
+.click{
+    border-color : #c92d18;
+    box-shadow : 0 0 10px #c92d18;
 }

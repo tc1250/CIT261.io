@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS Parse</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>Json Parse, Stringify</h2>
+        <h6>Also, more JS Events and XMLHTTPRequest</h6>
+        <p>
+            <a href=../index.html>Home</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>JSON</h3>
+                <p>JavaScript Object Notation (JSON) is a way to write JavaScript objects in string form. This allows JS Objects to be passed from server to client and transformed back into an object for use in the code. To turn an object into text (ready to send), use JSON.stringify(). To translate a JSON string back into an object, use JSON.parse().</p>
+                <figure>
+                    <figcaption>JSON Parse</figcaption>
+                    <pre><code>var myJSON = '{ "name":"Tyler", "age":29, "city":"Orem" }';
+var myObj = JSON.parse(myJSON);
+document.getElementById("someElement").innerHTML = myObj.name;</code></pre>
+                </figure>
+                <p>Here is some code using XMLHTTPRequest to get and display JSON from Github. When calling JSON.stringify, the third input, the 2, specifies the spacing for pretty printing the object so it's not just a string blob; it prints with some structure.</p>
+                <figure>
+                    <figcaption>JSON Stringify</figcaption>
+                    <pre><code>function startup() {
+    var destination = document.getElementById('jsonexample');
+    var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+    var request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    request.onload = function() {
+        var response = request.response;
+        destination.innerHTML = JSON.stringify(response,null,2);
+        }
+}</code></pre>
+                </figure>
+                <figure  id="target">
+                    <figcaption>JSON Example using XMLHTTPRequest, pretty printing, and JSON.stringify</figcaption>
+                    <pre><code id = "jsonexample"></code></pre>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="footer">Created by Tyler Christensen 2018</div>
+    <script src="js.js"></script>
+</body>
+
+</html>

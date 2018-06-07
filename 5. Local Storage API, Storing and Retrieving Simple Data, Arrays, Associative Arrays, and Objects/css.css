@@ -1,0 +1,25 @@
+form div input, form div select {
+    float: right;
+}
+
+form div {
+    clear: both;
+    margin: 0 auto;
+    width: 70%;
+    padding-bottom: 2rem;
+}
+
+form div label {
+    float: left;
+    width: 45%;
+    text-align: right;
+}
+
+form div input {
+    width: 49%;
+}
+
+form div select {
+    width: 49%;
+}
+
