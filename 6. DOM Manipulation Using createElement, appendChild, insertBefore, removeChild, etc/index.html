@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Local Storage</title>
+    <title>DOM Manipulation</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -11,7 +11,7 @@
 
 <body>
     <div class="header">
-        <h2>Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</h2>
+        <h2>DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc</h2>
         <p>
             <a href=../index.html>Home</a>
         </p>
@@ -19,12 +19,17 @@
     <div class="row">
         <div class="container">
             <div class="card">
-                <h3>Title</h3>
-                <p>Desc</p>
-                <figure>
-                    <figcaption>FigTitle</figcaption>
-                    <pre><code>pseudo-code</code></pre>
-                </figure>
+                <h3>createElement</h3>
+                <p>createElement creates new HTML elements. Can be used in conjunction with appendChild, insertBefore etc. to
+                    add the new element to the page.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <button id="create">Click Me!</button>
+                <div id='contentArea'></div>
             </div>
         </div>
     </div>
