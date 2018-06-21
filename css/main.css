@@ -144,8 +144,8 @@ pre {
 }
 
 .focus{
-    -webkit-transform : scale(1.005); 
-    transform : scale(1.005); 
+    -webkit-transform : scale(1.05); 
+    transform : scale(1.05); 
     outline : none;
     border-color : #9ecaed;
     box-shadow : 0 0 10px #9ecaed;  
