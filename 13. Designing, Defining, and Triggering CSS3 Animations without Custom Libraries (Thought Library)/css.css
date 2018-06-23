@@ -1,0 +1,101 @@
+.container1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    min-height: 4em;
+}
+
+.menu-icon {
+    position: relative;
+    width: 3em;
+    height: 2.25em;
+    display: inline-block;
+}
+
+.menu-icon span {
+    position: absolute;
+    height: 0.1875em;
+    width: 100%;
+    background-color: #363636;
+    transition: all 250ms ease-in-out;
+    transform: rotate(0deg);
+    box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.menu-icon span:nth-child(1) {
+    top: 0.09375em;
+}
+
+.menu-icon span:nth-child(2), .menu-icon span:nth-child(3) {
+    top: 0.9375em;
+}
+
+.menu-icon span:nth-child(4) {
+    top: 1.875em;
+}
+
+.menu-button:hover span, .menu-button:focus span, .menu-button:active span {
+    background: #D00251;
+}
+
+.menu-icon.is-active span:nth-child(1), .menu-icon.is-active span:nth-child(4) {
+    opacity: 0;
+}
+
+.menu-icon.is-active span:nth-child(2) {
+    transform: rotate(45deg);
+}
+
+.menu-icon.is-active span:nth-child(3) {
+    top: 0.9375em;
+    transform: rotate(-45deg);
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}

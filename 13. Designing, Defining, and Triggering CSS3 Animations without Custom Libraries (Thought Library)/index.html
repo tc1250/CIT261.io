@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Local Storage</title>
+    <title>CSS Animations</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -10,25 +10,59 @@
 </head>
 
 <body>
-    <div class="header">
-        <h2>Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects</h2>
-        <p>
-            <a href=../index.html>Home</a>
-        </p>
-    </div>
-    <div class="row">
-        <div class="container">
-            <div class="card">
-                <h3>Title</h3>
-                <p>Desc</p>
-                <figure>
-                    <figcaption>FigTitle</figcaption>
-                    <pre><code>pseudo-code</code></pre>
-                </figure>
+    <div id="main">
+        <div id="mySidenav" class="sidenav">
+            <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+            <a href="..\index.html">Home</a>
+            <a href="..\1. Loops, Conditional Statements, Functions, Variables, Parameters, Arrays, Associative Arrays\index.html">1. Loops</a>
+            <a href="..\2. Object Creation Functions, Inheritance, Properties, Methods, Instantiation\index.html">2. Objects</a>
+            <a href="..\3. Json Parse, Stringify\index.html">3. JSON</a>
+            <a href="..\4. Using XMLHTTPRequest to Consume a JSON Web Service\index.html">4. XMLHTTP Request</a>
+            <a href="..\5. Local Storage API, Storing and Retrieving Simple Data, Arrays, Associative Arrays, and Objects\index.html">5. Local Storage</a>
+            <a href="..\6. DOM Manipulation Using createElement, appendChild, insertBefore, removeChild, etc\index.html">6. DOM Manipulation</a>
+            <a href="..\7. Manipulating CSS Class Properties Using JavaScript\index.html">7. CSS & JS</a>
+            <a href="..\8. Creating CSS3 Transitions and Animations in CSS and triggering them with JavaScript\index.html">8. Transitions and Animations in JS</a>
+            <a href="..\9. Standard JavaScript Events Including those for Mobile Devices ( Ex. onTouchBegin, onLoad, etc.) and Animation and Transition Events\index.html">9. JS Events</a>
+            <a href="..\10. HTML5 Tags - Video, Audio, and Canvas\index.html">10. HTML5 Tags - Video, Audio, and Canvas</a>
+            <a href="..\11. Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries (Thought Library)\index.html">11. CSS Transitions</a>
+            <a href="..\12. Designing, Defining, and Triggering CSS3 Transforms without Custom Libraries (Thought Library)\index.html">12. CSS Transforms</a>
+            <a href="..\13. Designing, Defining, and Triggering CSS3 Animations without Custom Libraries (Thought Library)\index.html">13. CSS Animations</a>
+        </div>
+        <div class="container1" style="float:left" >
+            <a href="#" class="menu-button actual-button [ js-menu-button ]" onclick="openNav()">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </a>
+        </div>
+        <div class="header">
+
+            <h2>Designing, Defining, and Triggering CSS3 Animations without Custom Libraries (Thought Library)</h2>
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="card">
+                    <h3>Animated menu to exit icon</h3>
+                    <p>This was one of my favorite animations that I found, it animates the three line "menu" icon into an X
+                        when clicked and back to the menu icon when clicked again. This is a practical example of using a CSS animation to add value to a page.</p>
+                    <div class="container1">
+                        <a href="#" class="menu-button [ js-menu-button ]">
+                            <div class="menu-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="footer">Created by Tyler Christensen 2018</div>
     </div>
-    <div class="footer">Created by Tyler Christensen 2018</div>
     <script src="js.js"></script>
 </body>
 
