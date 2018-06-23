@@ -32,8 +32,8 @@ function startup() {
 window.addEventListener('DOMContentLoaded', startup, false);
 
 function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("mySidenav").style.width = "300px";
+    document.getElementById("main").style.marginLeft = "300px";
     var buttons = document.getElementsByClassName('actual-button');
     for(let element of buttons){
         element.setAttribute("onClick","closeNav()");
