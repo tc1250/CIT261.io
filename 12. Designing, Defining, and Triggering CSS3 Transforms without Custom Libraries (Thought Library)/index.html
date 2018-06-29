@@ -19,12 +19,24 @@
     <div class="row">
         <div class="container">
             <div class="card">
-                <h3>Title</h3>
-                <p>Desc</p>
-                <figure>
-                    <figcaption>FigTitle</figcaption>
-                    <pre><code>pseudo-code</code></pre>
-                </figure>
+                <h3>Transforms</h3>
+                <p>The transform property applies a 2D or 3D transformation to an element. This property allows you to rotate,
+                    scale, move, skew, etc., elements (
+                    <a href="https://www.w3schools.com/css/css3_transitions.asp">W3 Schools</a>).</p>
+                <div id="card1" class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div class="front">
+                            <img src="pictures/iceCream.jpg" alt="ice cream">
+                            <div class='inner'>Doesn't this ice cream look amazing?</div>
+                        </div>
+
+                        <div class="back">
+                            <img src="pictures/spaghetti.jpg" alt="spaghetti">
+                            <div class='inner'>Spaghetti is just the best!</div>
+                        </div>
+                    </div>
+                </div>
+                <button id="flipButton">Flip</button>
             </div>
         </div>
     </div>

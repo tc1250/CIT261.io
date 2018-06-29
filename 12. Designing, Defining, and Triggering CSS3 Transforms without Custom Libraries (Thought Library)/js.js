@@ -16,6 +16,10 @@ function startup() {
             this.className = this.className.replace(" click","");
         });
     }
+    var button = document.getElementById('flipButton');
+    button.addEventListener('click',function(){
+        document.getElementById('card1').classList.toggle('flip');
+    });
 }
 
 //event listener to fire the startup() funciton on load
