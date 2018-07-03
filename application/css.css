@@ -1,0 +1,46 @@
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -100;
+}
+
+.footer, .header, .card{
+    background: rgba(255, 255, 255, 0.5);
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
+/* Style the button used to pause/play the video */
+button {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ddd;
+    color: black;
+}
+
+body{
+    min-height: 400px;
+    margin-bottom: 100px;
+    clear: both;
+}
+ canvas{
+    border:1px solid #000000;
+ }

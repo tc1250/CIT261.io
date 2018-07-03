@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Video/Audio/Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+
+<body>
+    <div class="header">
+        <h2>HTML5 Tags - Video, Audio, and Canvas</h2>
+        <p>
+            <a href=../index.html>Home</a>
+        </p>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Video</h3>
+                <p>Video is added with the
+                    <code>video</code> tag. It will take a source inside of the tag. A full list of video tags and methods can be found at
+                    <a target="_blank" href='https://www.w3schools.com/tags/ref_av_dom.asp'>W3 Schools</a>.</p>
+                <button id="myBtn">Pause</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Background Opacity</h3>
+                <p>You may want to make your divs transparent so you can display text over the top of your video. This can be
+                    done with the opacity tag, but for a better effect, use the rgba() function to set color and opacity
+                    of the background without affecting the text.</p>
+                <figure>
+                    <figcaption>CSS for divs over movie</figcaption>
+                    <pre><code>                     //this example sets the background to white and then to half opacity
+                    .footer, .header, .card{
+                            background: rgba(255, 255, 255, 0.5);
+                    }
+                    </code></pre>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Audio Tags</h3>
+                <p>The
+                    <code>audio</code> element can be used to add sound to the page. Using the
+                    <code>controls</code> tag inside of the element will allow the user to control the sound, which we have done here.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container">
+            <div class="card">
+                <h3>Canvas</h3>
+                <p>Canvas has many uses. It uses JavaScript to draw on the webpage, either in 2D or 3D. This has a variety of
+                    applications, from advertising to games to custom animation. The best part of all: canvas works accross
+                    all modern browsers and platforms, so once you've got it working, it will work for all clients (provided
+                    they have a modern, updated browser).
+                    <br><br> In the example canvas below I've recreated my footer on a canvas using fillRect to draw the rectangle
+                    and fillText to draw the text. </p>
+                <canvas id="canvas" width="800" height="100">
+                    Sorry, browser does not support canvas.
+                </canvas>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer">Created by Tyler Christensen 2018</div>
+    <script src="js.js"></script>
+</body>
+
+</html>
