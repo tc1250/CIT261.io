@@ -1,13 +1,23 @@
-.footer, .header, .card {
-    background: rgba(255, 255, 255, 0.5);
+body {
+    margin-top:105px;
+}
+
+.header, .footer {
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #f1f1f1;
     width: 100%;
     padding: 20px;
 }
@@ -21,7 +31,7 @@ body {
 .my-handle {
     cursor: move;
     cursor: -webkit-grabbing;
-    padding-right:5px;
+    padding-right: 5px;
 }
 
 #search {
@@ -31,33 +41,34 @@ body {
     margin-left: 5%;
     float: right;
     background: white;
-    padding:10px;
+    padding: 10px;
 }
 
 #list {
-    display:block;
+    display: block;
     width: 42.5%;
     margin-left: 5%;
-    margin-right:0px;
+    margin-right: 0px;
     background: white;
 }
 
 ul {
     list-style: none;
     display: list-item;
-    padding:0px;
+    padding: 0px;
 }
 
 li {
     padding: 10px 40px;
-    background:grey;
+    background: grey;
     margin: 10px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 }
-#flex{
-    display:flex;
+
+#flex {
+    display: flex;
 }
