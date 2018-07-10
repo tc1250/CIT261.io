@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Shopping List</title>
+    <title>Christmas List</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
@@ -10,43 +10,27 @@
 </head>
 
 <body>
-    <div class="header">Title</div>
-<div id='flex'>
-    <div id='list'>
-        <ul id="shopping">
-            <li class="grid">
+    <div class="header">Christmas Shopping List</div>
+    <a href=taxonomy.html>See Taxonomy</a>
+    <div id='flex'>
+        <div id='list'>
+            <button id='openSearch' onclick="document.getElementById('searchModal').style.display='block';">Search Walmart.com</button>
+            <ul id="advanced-1">
 
-                <p>
-                    <span class="my-handle">☰</span> Item ID: 42608125</p>
-                <p> Item Name: Apple iPod touch 32GB</p>
-                <img src="https://i5.walmartimages.com/asr/cecd7151-08ae-47ce-84f2-b46abda0f5ca_1.22789781b5d7d5632eea50d3789f2156.jpeg?odnHeight=100&amp;odnWidth=100&amp;odnBg=FFFFFF"
-                    height="100px" width="auto">
-            </li>
-            <li class="grid">
-
-                <p>
-                    <span class="my-handle">☰</span>Item ID: 541357139</p>
-                <p> Item Name: Apple iPod touch 128GB</p>
-                <img src="https://i5.walmartimages.com/asr/d29dd960-03f9-48ec-8401-5ab9c0f2e05c_1.0eb296c8cce6a845625eaa3db127cfa7.jpeg?odnHeight=100&amp;odnWidth=100&amp;odnBg=FFFFFF"
-                    height="100px" width="auto">
-            </li>
-            <li class="grid">
-
-                <p>
-                    <span class="my-handle">☰</span>Item ID: 54203936</p>
-                <p> Item Name: Apple iPod Touch 6th Generation 32GB Refurbished</p>
-                <img src="https://i5.walmartimages.com/asr/e93e052b-1d80-4f74-909a-84e6fcd70ba8_1.fa87a178f6e538a0d806393b35b7d31f.jpeg?odnHeight=100&amp;odnWidth=100&amp;odnBg=FFFFFF"
-                    height="100px" width="auto">
-            </li>
-        </ul>
+            </ul>
+        </div>
+        <div class='flex' id='searchModal'>
+            <div id='search' class='animate'>
+                <input type="text" id="searchBox">
+                <button onclick='document.getElementById("searchModal").style.display="none";' style="float:right">X</button>
+                <button onclick='getProduct()'>Search</button>
+                <button id="clearResults">Clear Results</button>
+                <p id='count'></p>
+                <ul id='advanced-2'>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div id='search'>
-        <input type="text" id="searchBox">
-        <button onclick='xhr()'>Search</button>
-        <ul id='results'>
-        </ul>
-    </div>
-</div>
     <div class="footer">Created by Tyler Christensen 2018</div>
     <script src="Sortable.js"></script>
     <script src="js.js"></script>

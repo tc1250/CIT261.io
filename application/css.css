@@ -1,5 +1,5 @@
 body {
-    margin-top:105px;
+    margin-top: 105px;
 }
 
 .header, .footer {
@@ -35,21 +35,48 @@ body {
 }
 
 #search {
-    width: 42.5%;
-    height: 100%;
-    margin-right: 5%;
-    margin-left: 5%;
-    float: right;
-    background: white;
-    padding: 10px;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    max-width: 1200px;
+    min-height: 40%;
+    width: 80%;
+    padding: 15px;
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 #list {
     display: block;
     width: 42.5%;
-    margin-left: 5%;
-    margin-right: 0px;
+    /* margin-left: 5%;
+    margin-right: 0px; */
     background: white;
+    margin: auto;
+}
+
+#list button{
+    margin:0px 10px 0px 10px;
 }
 
 ul {
@@ -66,9 +93,22 @@ li {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    /*grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));*/
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    background-color: #2196F3;
+    padding: 10px;
+}
+
+.wide {
+    grid-column-start: 1;
+    grid-column-end: 5;
 }
 
 #flex {
     display: flex;
+}
+
+#advanced-1, #advanced-2{
+    min-height:10px;
 }
