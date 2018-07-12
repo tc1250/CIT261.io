@@ -15,6 +15,7 @@
     <div id='flex'>
         <div id='list'>
             <button id='openSearch' onclick="document.getElementById('searchModal').style.display='block';">Search Walmart.com</button>
+            <button id='customButton'>Add Custom Item</button>
             <ul id="advanced-1">
 
             </ul>
@@ -22,8 +23,8 @@
         <div class='flex' id='searchModal'>
             <div id='search' class='animate'>
                 <input type="text" id="searchBox">
-                <button onclick='document.getElementById("searchModal").style.display="none";' style="float:right">X</button>
-                <button onclick='getProduct()'>Search</button>
+                <button id='closeButton' onclick='document.getElementById("searchModal").style.display="none";' style="float:right">X</button>
+                <button id='searchButton' onclick='getProduct()'>Search</button>
                 <button id="clearResults">Clear Results</button>
                 <p id='count'></p>
                 <ul id='advanced-2'>
@@ -31,9 +32,35 @@
             </div>
         </div>
     </div>
-    <div class="footer">Created by Tyler Christensen 2018</div>
-    <script src="Sortable.js"></script>
-    <script src="js.js"></script>
+
+    <div id="createItem" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Add Item</h2>
+            </div>
+            <div class="modal-body">
+                    <label for="itemName">Name: </label>
+                    <input id='itemName' type="text" required>
+                    <label for="itemId">Product ID: </label>
+                    <input id='itemId' type="text" placeholder="Optional">
+                    <label for="itemPrice">Item Price: </label>
+                    <input id='itemPrice' type="text" required>
+                    <label for="itemPicture">Item Picture: </label>
+                    <input id='itemPicture' type="text" placeholder="Optional (Copy the picture link)">
+                    <label for="itemDescription">Description: </label>
+                    <input id='itemDescription' type="text" placeholder="Optional">
+                    <label for="itemLink">Item Link: </label>
+                    <input id='itemLink' type="text" placeholder="Optional">
+                    <button id='addItem'>Add Item</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">Created by Tyler Christensen 2018</div>
+        <script src="Sortable.js"></script>
+        <script src="js.js"></script>
 
 </body>
 

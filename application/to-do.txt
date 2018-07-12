@@ -1,0 +1,22 @@
+Add items from search to list DONE
+    side by side DONE
+    drag and drop DONE
+make search button fire when hitting enter
+mark item purchased (cross off)
+remove item from list
+Allow creation of custom items
+Create separate lists for different people
+Add link to item display
+Save the list to localstorage so it remains when you return
+totals
+    list total
+    person total
+Actually style item display so it looks good
+    search will be hidden to start
+    will come in from the side, moving everything to fit like the menu bar I created previously
+Error handling
+    no blank searches
+    validate input on custom items
+
+maybe:
+add a basic password; it would have to be stored in localstorage, to prevent other people around the house from accessing the list. 
