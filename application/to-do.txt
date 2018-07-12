@@ -1,12 +1,12 @@
 Add items from search to list DONE
     side by side DONE
     drag and drop DONE
-make search button fire when hitting enter
-mark item purchased (cross off)
-remove item from list
-Allow creation of custom items
+make search button fire when hitting enter DONE
+mark item purchased (cross off) DONE
+remove item from list DONE
+Allow creation of custom items DONE
 Create separate lists for different people
-Add link to item display
+Add link to item display DONE
 Save the list to localstorage so it remains when you return
 totals
     list total

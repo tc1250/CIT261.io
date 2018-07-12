@@ -262,3 +262,9 @@ input[type=text], select {
     border-style: solid;
     border-color: black transparent transparent transparent;
 }
+
+#total{
+    position:absolute;
+    top: 105px;
+    left:0px;
+}

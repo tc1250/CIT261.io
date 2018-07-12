@@ -65,10 +65,26 @@ function startup() {
         }
     });
 
-    document.getElementById('addItem').addEventListener('click', function(){
+    document.getElementById('addItem').addEventListener('click', function () {
         addNewItem();
     });
 
+    // select the target node
+    var target = document.querySelector('#advanced-1');
+
+    // create an observer instance
+    var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            console.log(mutation.type);
+            updateTotal();
+        });
+    });
+
+    // configuration of the observer:
+    var config = { attributes: true, childList: true, characterData: true }
+
+    // pass in the target node, as well as the observer options
+    observer.observe(target, config);
 };
 
 //event listener to fire the startup() function on load
@@ -175,7 +191,7 @@ function addNewItem() {
 
     //document.getElementById('advanced-1').innerHTML = html;
     var child = document.createElement('li');
-    child.setAttribute('class','grid tooltip');
+    child.setAttribute('class', 'grid tooltip');
     document.getElementById('advanced-1').appendChild(child).innerHTML = html;
 
     itemName.innerHTML = "";
@@ -192,11 +208,25 @@ function addNewItem() {
 function buildListItem(itemId, name, salePrice, thumbnailImage, itemDescription, itemLink) {
     var listItem;
     if ((typeof itemLink !== "undefined")) {
-        listItem = '<p><span class="my-handle">☰</span>Item ID: ' + itemId + '</p><p> Item Name: ' + name + '</p><p> Item Price: ' + salePrice + '</p><p>Item Link: ' + itemLink + '</p><img src="' + thumbnailImage + '" height="100px" width="auto"><button class="deleteButton">Delete</button><button class="purchasedButton">Purchased</button><span class="tooltiptext">' + itemDescription + '</span>';
+        listItem = '<p><span class="my-handle">☰</span>Item ID: ' + itemId + '</p><p> Item Name: ' + name + '</p><p> Item Price: <span  class="itemPrice">' + salePrice + '</span></p><p>Item Link: ' + itemLink + '</p><img src="' + thumbnailImage + '" height="100px" width="auto"><button class="deleteButton">Delete</button><button class="purchasedButton">Purchased</button><span class="tooltiptext">' + itemDescription + '</span>';
     } else {
-        listItem = '<li class="grid tooltip"><p><span class="my-handle">☰</span>Item ID: ' + itemId + '</p><p> Item Name: ' + name + '</p><p> Item Price: ' + salePrice + '</p><img src="' + thumbnailImage + '" height="100px" width="auto"><button class="deleteButton">Delete</button><button class="purchasedButton">Purchased</button><span class="tooltiptext">' + itemDescription + '</span></li>';
+        listItem = '<li class="grid tooltip"><p><span class="my-handle">☰</span>Item ID: ' + itemId + '</p><p> Item Name: ' + name + '</p><p> Item Price: <span  class="itemPrice">' + salePrice + '</span></p><img src="' + thumbnailImage + '" height="100px" width="auto"><button class="deleteButton">Delete</button><button class="purchasedButton">Purchased</button><span class="tooltiptext">' + itemDescription + '</span></li>';
     }
 
 
     return listItem;
+}
+
+function updateTotal() {
+    var total = 0;
+    var priceArray = document.getElementById('advanced-1');
+    var query = priceArray.querySelectorAll('.itemPrice');
+    for(let price of query){
+        var num = parseFloat(price.innerHTML);
+        total = total + num;
+        console.log(num);
+    }
+
+
+    document.getElementById('total').innerHTML = total;
 }
