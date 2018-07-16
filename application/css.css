@@ -298,7 +298,7 @@ input[type=text], select {
     z-index: 101;
 }
 
-.mute img, .unmute img{
+.mute img, .unmute img {
     position: fixed;
     top: 10px;
     left: 0px;
@@ -309,7 +309,7 @@ input[type=text], select {
     border-radius: 15px;
     z-index: 101;
     clear: right;
-    height:15px;
+    height: 15px;
 }
 
 #total p {
@@ -373,27 +373,27 @@ input[type=text], select {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Corben';
-    margin:0px;
+    margin: 0px;
 }
 
 p, div, button {
     font-family: 'Nobile';
 }
 
-button{
-    padding:5px;
+button {
+    padding: 5px;
     transition: transform .2s;
 }
 
-button:hover{
-    transform:scale(1.1);
+button:hover {
+    transform: scale(1.1);
 }
 
 #myVideo {
     position: fixed;
     right: 0;
     bottom: 0;
-    min-width: 100%; 
+    min-width: 100%;
     min-height: 100%;
     z-index: -100;
 }
@@ -406,10 +406,14 @@ input#mute {
     display: none;
 }
 
-input#un-mute:checked ~ .unmute img {
+#un-mute {
     display: none;
 }
 
-input#un-mute:checked ~ .mute img {
+input#un-mute:checked~.unmute img {
+    display: none;
+}
+
+input#un-mute:checked~.mute img {
     display: initial;
 }
