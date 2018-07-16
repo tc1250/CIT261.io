@@ -2,13 +2,14 @@ body {
     margin-top: 105px;
 }
 
-button{
+button {
     border-radius: 15px;
 }
 
 .header, .footer {
     background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
+    z-index: 10;
 }
 
 .header {
@@ -38,27 +39,31 @@ body {
     padding-right: 5px;
 }
 
+li {
+    cursor: move;
+    cursor: -webkit-grabbing;
+}
+
 #list, #search {
-    top:115px;
+    top: 115px;
     min-height: 40%;
     width: 80%;
     border: 1px solid #888;
     padding: 15px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
 }
 
 #search {
     /* position:absolute; */
     background-color: #fefefe;
-    display:none;
+    display: none;
 }
 
 #list {
     display: block;
     background: white;
-
 }
 
 #list button {
@@ -96,7 +101,6 @@ ul {
 
 li {
     padding: 10px 40px;
-    background: grey;
     margin: 10px;
 }
 
@@ -130,6 +134,7 @@ li {
 
 .purchasedButton, .deleteButton {
     background: grey;
+    float: left;
 }
 
 #advanced-2 .purchasedButton, #advanced-2 .deleteButton {
@@ -143,7 +148,7 @@ li {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
     padding-top: 100px;
     left: 0;
     top: 0;
@@ -160,13 +165,14 @@ li {
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
     border-radius: 15px;
+    overflow: auto;
 }
 
 @-webkit-keyframes animatetop {
@@ -192,7 +198,7 @@ li {
 }
 
 .close {
-    color: grey;
+    color: #2196F3;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -206,7 +212,7 @@ li {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border-radius: 15px 15px 0px 0px;
 }
@@ -215,59 +221,166 @@ li {
     padding: 2px 16px;
 }
 
+.modal-content label {
+    float: left;
+    clear: left;
+    width: 15%;
+    text-align: right;
+    padding: 12px 20px 12px 20px;
+}
+
+.modal-content input {
+    display: inline-block;
+    float: left;
+}
+
 input[type=text], select {
-    width: 95%;
+    width: 80%;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: auto;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
+.tooltip {
+    display: block;
+    border: 1px solid #888;
+}
 
-    background-color: black;
+.tooltip .tooltiptext {
+    display: inline-block;
+    visibility: hidden;
+    width: 80%;
+    background-color: #555;
     color: #fff;
     text-align: center;
-    border-radius: 6px;
     padding: 5px 0;
-    /* Position the tooltip */
+    border-radius: 6px;
+    /* Position the tooltip text */
     position: absolute;
-    z-index: 100;
-    width: 75%;
-    bottom: 100%;
-    left: 50%; 
-    margin-left: -37.5% 
+    z-index: 1100;
+    bottom: 103%;
+    left: 50%;
+    margin-left: -40%;
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-.tooltip .tooltiptext::after {
-    content: " ";
+.tooltiptext::after {
+    content: "";
     position: absolute;
-    top: 100%; /* At the bottom of the tooltip */
+    top: 100%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: black transparent transparent transparent;
+    border-color: #555 transparent transparent transparent;
 }
 
-#total{
-    display:none;
-    position:fixed;
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+#total {
+    display: none;
+    position: fixed;
     top: 56px;
-    left:0px;
+    left: 0px;
     border: 1px solid #888;
-    background:white;
-    padding:15px;
+    background: white;
+    padding: 15px;
+    margin: 0px;
+    border-radius: 15px;
+    z-index: 101;
+}
+
+#total p {
+    margin: 0px;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #2196F3;
+    border-bottom: 16px solid #2196F3;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: auto;
+    transform: translateY(-50%);
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#search .invalid, .modal-content .invalid {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    border-color: red;
+    border-style: solid;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben', Georgia, Times, serif;
     margin:0px;
 }
 
-#total p{
-    margin:0px;
+p, div, button {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
 }
+
+button{
+    padding:5px;
+    transition: transform .2s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+    z-index: -100;
+}
+

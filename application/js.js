@@ -16,15 +16,20 @@ function startup() {
     }].forEach(function (groupOpts, i) {
         Sortable.create(byId('advanced-' + (i + 1)), {
             sort: (i != 1),
-            handle: '.my-handle',
+            //handle: '.my-handle',
             group: groupOpts,
-            animation: 150
+            animation: 150,
+            fallbackTolerance: 100
         });
     });
 
     //when new input is detected, set the startAt parameter back to 1 so we start the search list from the beginning
     byId('search').addEventListener('input', function () {
         startAt = 1;
+    });
+
+    byId('searchBox').addEventListener('input', function () {
+        byId('searchBox').classList.remove('invalid');
     });
 
     //clear input when the button is pressed
@@ -62,12 +67,13 @@ function startup() {
     byId('advanced-1').addEventListener('click', function (e) {
         e.preventDefault();
         if (e.target.classList.contains('purchasedButton')) {
-            e.target.parentElement.classList.toggle("purchased");
+            e.target.parentElement.parentElement.classList.toggle("purchased");
             saveShoppingList();
+            updateButtonText(e);
         }
 
         if (e.target.classList.contains('deleteButton')) {
-            e.target.parentElement.parentElement.removeChild(e.target.parentElement);
+            e.target.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement);
             saveShoppingList();
         }
     });
@@ -94,9 +100,42 @@ function startup() {
     observer.observe(target, config);
 
     //check localstorage
-    if(localStorage.getItem('shoppingList')){
+    if (localStorage.getItem('shoppingList')) {
         retrieveShoppingList();
     }
+
+    var tooltips = document.getElementsByClassName('tooltip');
+    for (let element of tooltips) {
+        element.addEventListener('hover', function (e) {
+            e.target.querySelector('tooltiptext').style.visibility = 'visible';
+        });
+    }
+
+    //reset any fields that were marked invalid during validation
+    byId('itemName').addEventListener('input', function (e) {
+        byId('itemName').classList.remove('invalid');
+    });
+
+    byId('itemId').addEventListener('input', function (e) {
+        byId('itemId').classList.remove('invalid');
+    });
+
+    byId('itemPrice').addEventListener('input', function (e) {
+        byId('itemPrice').classList.remove('invalid');
+    });
+
+    byId('itemPicture').addEventListener('input', function (e) {
+        byId('itemPicture').classList.remove('invalid');
+    });
+
+    byId('itemDescription').addEventListener('input', function (e) {
+        byId('itemDescription').classList.remove('invalid');
+    });
+
+    byId('itemLink').addEventListener('input', function (e) {
+        byId('itemLink').classList.remove('invalid');
+    });
+
 };
 
 //event listener to fire the startup() function on load
@@ -109,10 +148,17 @@ var numResponseItems = 0;
 //AJAX
 function getProduct() {
     var searchVar = byId('searchBox').value;
+    //validate that searchbox is not empty
+    if (searchVar == null || searchVar == "") {
+        byId('searchBox').classList.add('invalid');
+        return false;
+    }
+    byId('searchBox').classList.remove('invalid');
     var responseObj;
-    var html = "";
+    var html = '<div class="row"><div class="col-3 center"><p>Item ID</p></div><div class="col-2 center"><p>Item Name</p></div><div class="col-3 center"><p>Item Price</p></div><div class="col-3 center"><p>Image</p></div></div><div class=row><div class="col-1"><hr></div></div>';
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
+
         if (this.readyState == 4 && this.status == 200) {
             responseObj = JSON.parse(this.responseText);
             numResponseItems = responseObj.totalResults;
@@ -147,6 +193,8 @@ function getProduct() {
                 parent.insertBefore(child2, sibling);
 
             }
+        } else {
+            byId('advanced-2').innerHTML = "<div class='loader'></div>"
         }
     };
     //I was getting CORS errors trying to call the API, so I'm just using a proxy to do the calls now
@@ -197,32 +245,63 @@ function addNewItem() {
     var itemDescription = byId('itemDescription').value;
     var itemLink = byId('itemLink').value;
 
+    if (itemName == null || itemName == "") {
+        byId('itemName').classList.toggle('invalid');
 
+        return false;
+    }
 
+    if (itemPrice == null || itemPrice == "") {
+        byId('itemPrice').classList.add('invalid');
+        return false;
+    }
+
+    if(isNaN(itemPrice)){
+        byId('itemPrice').classList.add('invalid');
+        return false;
+    }
+
+    if (itemPicture == null || itemPicture == "") {
+        itemPicture = "Images/no_image.png";
+    }
+
+    if (itemDescription == null || itemDescription == "") {
+        itemDescription = "No description entered for this item.";
+    }
+
+    if (itemLink == null || itemLink == "") {
+        itemLink = "<a href='.'>No link was added</a>";
+    }else{
+        itemLink = "<a href="+itemLink+">Link to Item</a>"
+    }
+
+    if (itemId == null || itemId == "") {
+        itemId = "000000";
+    }
     var html = buildListItem(itemId, itemName, itemPrice, itemPicture, itemDescription, itemLink);
 
     //document.getElementById('advanced-1').innerHTML = html;
     var child = document.createElement('li');
-    child.setAttribute('class', 'grid tooltip');
+    child.setAttribute('class', 'tooltip row');
     byId('advanced-1').appendChild(child).innerHTML = html;
 
-    itemName.innerHTML = "";
-    itemId.innerHTML = "";
-    itemPrice.innerHTML = "";
-    itemPicture.innerHTML = "";
-    itemDescription.innerHTML = "";
-    itemLink.innerHTML = "";
+    byId('itemName').innerHTML = "";
+    byId('itemId').innerHTML = "";
+    byId('itemPrice').innerHTML = "";
+    byId('itemPicture').innerHTML = "";
+    byId('itemDescription').innerHTML = "";
+    byId('itemLink').innerHTML = "";
 
-    document.getElementsByClassName("close")[0].click();
+    byId("closeModal").click();
 }
 
 //builds the <li> items for the lists. 
 function buildListItem(itemId, name, salePrice, thumbnailImage, itemDescription, itemLink) {
     var listItem;
     if ((typeof itemLink !== "undefined")) {
-        listItem = '<p><span class="my-handle">☰</span>Item ID: ' + itemId + '</p><p> Item Name: ' + name + '</p><p> Item Price: <span  class="itemPrice">' + salePrice + '</span></p><p>Item Link: ' + itemLink + '</p><img src="' + thumbnailImage + '" height="100px" width="auto"><button class="deleteButton">Delete</button><button class="purchasedButton">Purchased</button><span class="tooltiptext">' + itemDescription + '</span>';
+        listItem = '<div class="col-3"><p><span class="my-handle">☰</span>' + itemId + '</p></div><div class="col-2"><p>' + name + '</p></div><div class="col-3 center"><p>$<span  class="itemPrice">' + salePrice + '</span></p></div><div class="col-3 center"><img style="max-height:50px;" src="' + thumbnailImage + '"></div><div class="col-1">' + itemLink + '</div><div class="col-1"><button class="deleteButton">Delete</button><button class="purchasedButton">Mark as Purchased</button></div><span class="tooltiptext">' + itemDescription + '</span>';
     } else {
-        listItem = '<li class="grid tooltip"><p><span class="my-handle">☰</span>Item ID: ' + itemId + '</p><p> Item Name: ' + name + '</p><p> Item Price: <span  class="itemPrice">' + salePrice + '</span></p><img src="' + thumbnailImage + '" height="100px" width="auto"><button class="deleteButton">Delete</button><button class="purchasedButton">Purchased</button><span class="tooltiptext">' + itemDescription + '</span></li>';
+        listItem = '<li class="tooltip row"><div class="col-3"><p><span class="my-handle">☰</span>' + itemId + '</p></div><div class="col-2"><p>' + name + '</p></div><div class="col-3 center"><p>$<span  class="itemPrice">' + salePrice + '</span></p></div><div class="col-3 center"><img style="max-height:50px;" src="' + thumbnailImage + '"></div><div class="col-1"><button class="deleteButton">Delete</button><button class="purchasedButton">Mark as Purchased</button></div><span class="tooltiptext">' + itemDescription + '</span></li>';
     }
 
 
@@ -239,18 +318,28 @@ function updateTotal() {
         total = total + num;
     }
     var totalDiv = byId('total')
-    totalDiv.innerHTML = "Total: $" + total;
+    totalDiv.innerHTML = "Total: $" + total.toFixed(2);
     totalDiv.style.display = 'block';
 
 }
 
 //adding the shopping list to localstorage
-function saveShoppingList(){
+function saveShoppingList() {
     var list = byId('advanced-1').innerHTML;
     localStorage.setItem('shoppingList', list);
 }
 //retrieving the shopping list from localstorage
-function retrieveShoppingList(){
+function retrieveShoppingList() {
     var list = byId('advanced-1');
     list.innerHTML = localStorage.getItem('shoppingList');
+}
+
+//update purchased button text
+function updateButtonText(e) {
+    var button = e.target;
+    if (button.parentElement.parentElement.classList.contains('purchased')) {
+        button.innerHTML = "Undo";
+    } else {
+        button.innerHTML = "Mark as Purchased";
+    }
 }

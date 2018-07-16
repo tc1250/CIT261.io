@@ -7,16 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="css.css">
+    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div class="header">Christmas Shopping List</div>
+    <div class="header"><h6>Christmas Shopping List</h1></div>
     <div id='flex'>
         <div id='list'>
             <button id='openSearch' onclick="document.getElementById('search').style.display='block';">Search Walmart.com</button>
             <button id='customButton'>Add Custom Item</button>
+            <div class="row">
+                <div class="col-3 center">
+                    <p>Item ID</p>
+                </div>
+                <div class="col-2 center">
+                    <p>Item Name</p>
+                </div>
+                <div class="col-3 center">
+                    <p>Item Price</p>
+                </div>
+                <div class="col-3 center">
+                    <p>Image</p>
+                </div>
+            </div>
+            <div class=row>
+                <div class="col-1">
+                    <hr>
+                </div>
+            </div>
             <ul id="advanced-1">
-
             </ul>
         </div>
         <div id='search' class='animate'>
@@ -32,7 +52,7 @@
 
     <div id="createItem" class="modal">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="modal-content flex">
             <div class="modal-header">
                 <span class="close" id="closeModal">&times;</span>
                 <h2>Add Item</h2>
@@ -50,7 +70,8 @@
                 <input id='itemDescription' type="text" placeholder="Optional">
                 <label for="itemLink">Item Link: </label>
                 <input id='itemLink' type="text" placeholder="Optional">
-                <button id='addItem'>Add Item</button>
+                <div style="clear: left; margin:auto; width:90%;"><button style="width:100%;" id='addItem' >Add Item</button></div>
+                
                 </form>
             </div>
         </div>
@@ -59,9 +80,11 @@
         <p>$0</p>
     </div>
     <div class="footer">Created by Tyler Christensen 2018</div>
+    <video autoplay="" muted="" loop="" id="myVideo">
+        <source src="Videos/santa_n_snow.mp4" type="video/mp4">
+    </video>
     <script src="Sortable.js"></script>
     <script src="js.js"></script>
-
 </body>
 
 </html>
