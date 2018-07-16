@@ -11,25 +11,22 @@
 
 <body>
     <div class="header">Christmas Shopping List</div>
-    <a href=taxonomy.html>See Taxonomy</a>
     <div id='flex'>
         <div id='list'>
-            <button id='openSearch' onclick="document.getElementById('searchModal').style.display='block';">Search Walmart.com</button>
+            <button id='openSearch' onclick="document.getElementById('search').style.display='block';">Search Walmart.com</button>
             <button id='customButton'>Add Custom Item</button>
             <ul id="advanced-1">
 
             </ul>
         </div>
-        <div class='flex' id='searchModal'>
-            <div id='search' class='animate'>
-                <input type="text" id="searchBox">
-                <button id='closeButton' onclick='document.getElementById("searchModal").style.display="none";' style="float:right">X</button>
-                <button id='searchButton' onclick='getProduct()'>Search</button>
-                <button id="clearResults">Clear Results</button>
-                <p id='count'></p>
-                <ul id='advanced-2'>
-                </ul>
-            </div>
+        <div id='search' class='animate'>
+            <input type="text" id="searchBox">
+            <span class="close" id="closeSearch">&times;</span>
+            <button id='searchButton' onclick='getProduct()'>Search</button>
+            <button id="clearResults">Clear Results</button>
+            <p id='count'></p>
+            <ul id='advanced-2'>
+            </ul>
         </div>
     </div>
 
@@ -37,7 +34,7 @@
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
-                <span class="close">&times;</span>
+                <span class="close" id="closeModal">&times;</span>
                 <h2>Add Item</h2>
             </div>
             <div class="modal-body">
@@ -59,7 +56,7 @@
         </div>
     </div>
     <div id='total'>
-        <h1>TOTALDIV</h1>
+        <p>$0</p>
     </div>
     <div class="footer">Created by Tyler Christensen 2018</div>
     <script src="Sortable.js"></script>

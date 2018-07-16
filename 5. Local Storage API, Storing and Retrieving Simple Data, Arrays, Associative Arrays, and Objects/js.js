@@ -19,7 +19,7 @@ function startup() {
     }
 }
 
-//event listener to fire the startup() funciton on load
+//event listener to fire the startup() function on load
 window.addEventListener('DOMContentLoaded', startup, false);
 
 //setting up localstorage stuff

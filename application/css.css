@@ -2,6 +2,10 @@ body {
     margin-top: 105px;
 }
 
+button{
+    border-radius: 15px;
+}
+
 .header, .footer {
     background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
@@ -34,13 +38,31 @@ body {
     padding-right: 5px;
 }
 
-#search {
-    background-color: #fefefe;
-    border: 1px solid #888;
-    max-width: 1200px;
+#list, #search {
+    top:115px;
     min-height: 40%;
     width: 80%;
+    border: 1px solid #888;
     padding: 15px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 15px;
+}
+
+#search {
+    /* position:absolute; */
+    background-color: #fefefe;
+    display:none;
+}
+
+#list {
+    display: block;
+    background: white;
+
+}
+
+#list button {
+    margin: 0px 10px 0px 10px;
 }
 
 .animate {
@@ -64,19 +86,6 @@ body {
     to {
         transform: scale(1)
     }
-}
-
-#list {
-    display: block;
-    width: 42.5%;
-    /* margin-left: 5%;
-    margin-right: 0px; */
-    background: white;
-    margin: auto;
-}
-
-#list button {
-    margin: 0px 10px 0px 10px;
 }
 
 ul {
@@ -110,7 +119,7 @@ li {
 }
 
 #advanced-1, #advanced-2 {
-    min-height: 10px;
+    min-height: 100%;
 }
 
 .purchased {
@@ -131,32 +140,19 @@ li {
     display: block;
 }
 
-/* The Modal (background) */
-
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Sit on top */
     padding-top: 100px;
-    /* Location of the box */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     overflow: auto;
-    /* Enable scroll if needed */
     background-color: rgb(0, 0, 0);
-    /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
 }
-
-/* Modal Content */
 
 .modal-content {
     position: relative;
@@ -169,10 +165,9 @@ li {
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
+    border-radius: 15px;
 }
-
-/* Add Animation */
 
 @-webkit-keyframes animatetop {
     from {
@@ -196,10 +191,8 @@ li {
     }
 }
 
-/* The Close Button */
-
 .close {
-    color: white;
+    color: grey;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -215,6 +208,7 @@ li {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .modal-body {
@@ -222,7 +216,7 @@ li {
 }
 
 input[type=text], select {
-    width: 100%;
+    width: 95%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -264,7 +258,16 @@ input[type=text], select {
 }
 
 #total{
-    position:absolute;
-    top: 105px;
+    display:none;
+    position:fixed;
+    top: 56px;
     left:0px;
+    border: 1px solid #888;
+    background:white;
+    padding:15px;
+    margin:0px;
+}
+
+#total p{
+    margin:0px;
 }
