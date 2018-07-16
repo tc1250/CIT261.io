@@ -136,6 +136,15 @@ function startup() {
         byId('itemLink').classList.remove('invalid');
     });
 
+    byId('un-mute').addEventListener('click',function(){
+        var audio = byId('audio');
+        var isPlaying = !audio.paused;
+        if(isPlaying){
+            audio.pause();
+        }else{
+            audio.play();
+        }
+    });
 };
 
 //event listener to fire the startup() function on load

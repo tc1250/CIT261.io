@@ -12,7 +12,9 @@
 </head>
 
 <body>
-    <div class="header"><h6>Christmas Shopping List</h1></div>
+    <div class="header">
+        <h6>Christmas Shopping List</h1>
+    </div>
     <div id='flex'>
         <div id='list'>
             <button id='openSearch' onclick="document.getElementById('search').style.display='block';">Search Walmart.com</button>
@@ -70,8 +72,10 @@
                 <input id='itemDescription' type="text" placeholder="Optional">
                 <label for="itemLink">Item Link: </label>
                 <input id='itemLink' type="text" placeholder="Optional">
-                <div style="clear: left; margin:auto; width:90%;"><button style="width:100%;" id='addItem' >Add Item</button></div>
-                
+                <div style="clear: left; margin:auto; width:90%;">
+                    <button style="width:100%;" id='addItem'>Add Item</button>
+                </div>
+
                 </form>
             </div>
         </div>
@@ -83,6 +87,16 @@
     <video autoplay="" muted="" loop="" id="myVideo">
         <source src="Videos/santa_n_snow.mp4" type="video/mp4">
     </video>
+    <audio autoplay loop src="Audio/jingle_bells.mp3" id="audio">
+    </audio>
+    <input type="checkbox" name="un-mute" id="un-mute">
+    <label for="un-mute" class="mute">
+        <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" alt="Speaker_Icon.svg" title="Unmute/speaker icon">
+    </label>
+    <label for="un-mute" class="unmute">
+        <img src="http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg" alt="Mute_Icon.svg" title="Mute icon">
+    </label>
+
     <script src="Sortable.js"></script>
     <script src="js.js"></script>
 </body>
