@@ -15,11 +15,9 @@ function startup() {
         put: false,
     }].forEach(function (groupOpts, i) {
         Sortable.create(byId('advanced-' + (i + 1)), {
-            sort: (i != 1),
-            //handle: '.my-handle',
-            group: groupOpts,
+            group:groupOpts,
             animation: 150,
-            fallbackTolerance: 100
+            scroll:true
         });
     });
 
@@ -136,12 +134,12 @@ function startup() {
         byId('itemLink').classList.remove('invalid');
     });
 
-    byId('un-mute').addEventListener('click',function(){
+    byId('un-mute').addEventListener('click', function () {
         var audio = byId('audio');
         var isPlaying = !audio.paused;
-        if(isPlaying){
+        if (isPlaying) {
             audio.pause();
-        }else{
+        } else {
             audio.play();
         }
     });
@@ -156,6 +154,7 @@ var numResponseItems = 0;
 
 //AJAX
 function getProduct() {
+
     var searchVar = byId('searchBox').value;
     //validate that searchbox is not empty
     if (searchVar == null || searchVar == "") {
@@ -166,46 +165,61 @@ function getProduct() {
     var responseObj;
     var html = '<div class="row"><div class="col-3 center"><p>Item ID</p></div><div class="col-2 center"><p>Item Name</p></div><div class="col-3 center"><p>Item Price</p></div><div class="col-3 center"><p>Image</p></div></div><div class=row><div class="col-1"><hr></div></div>';
     xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
+    try {
+        xmlhttp.onreadystatechange = function () {
 
-        if (this.readyState == 4 && this.status == 200) {
-            responseObj = JSON.parse(this.responseText);
-            numResponseItems = responseObj.totalResults;
-            //build the items to display, calls a separate function that returns the HTML string
-            for (let object of responseObj.items) {
-                html += buildListItem(object.itemId, object.name, object.salePrice, object.thumbnailImage, object.shortDescription);
+            if (this.readyState == 4 && this.status == 200) {
+                responseObj = JSON.parse(this.responseText);
+                numResponseItems = responseObj.totalResults;
+
+                //check if response is iterable, or that the response contains something
+                if (numResponseItems == 0) {
+                    byId('advanced-2').innerHTML = "Empty response, please try a different search term";
+                    return;
+                }
+
+                //build the items to display, calls a separate function that returns the HTML string
+                for (let object of responseObj.items) {
+                    html += buildListItem(object.itemId, object.name, object.salePrice, object.thumbnailImage, object.shortDescription);
+                }
+                //add list items to DOM
+                byId('advanced-2').innerHTML = html;
+                //calculating what items we are displaying and creating the forward and back buttons
+                byId('count').innerHTML = startAt + '-' + (startAt + 4) + ' of ' + numResponseItems + ' items';
+                if (!byId('back')) {
+                    var child1 = document.createElement('button');
+                    var child2 = document.createElement('button');
+
+                    child1.setAttribute('type', 'button');
+                    child1.setAttribute('onclick', "back()");
+                    child1.setAttribute('id', 'back');
+                    var child1Text = document.createTextNode('<');
+                    child1.appendChild(child1Text);
+
+                    child2.setAttribute('type', 'button');
+                    child2.setAttribute('onclick', "forward()");
+                    child2.setAttribute('id', 'forward');
+                    var child2Text = document.createTextNode('>');
+                    child2.appendChild(child2Text);
+
+                    var parent = byId('advanced-2').parentNode;
+                    var sibling = byId('advanced-2');
+
+                    parent.insertBefore(child1, sibling);
+                    parent.insertBefore(child2, sibling);
+
+                }
+            } else if (this.status >= 400) {
+                byId('advanced-2').innerHTML = "There was an error processing the request. Please try again."
+            } else {
+                byId('advanced-2').innerHTML = "<div class='loader'></div>"
             }
-            //add list items to DOM
-            byId('advanced-2').innerHTML = html;
-            //calculating what items we are displaying and creating the forward and back buttons
-            byId('count').innerHTML = startAt + '-' + (startAt + 4) + ' of ' + numResponseItems + ' items';
-            if (!byId('back')) {
-                var child1 = document.createElement('button');
-                var child2 = document.createElement('button');
 
-                child1.setAttribute('type', 'button');
-                child1.setAttribute('onclick', "back()");
-                child1.setAttribute('id', 'back');
-                var child1Text = document.createTextNode('<');
-                child1.appendChild(child1Text);
 
-                child2.setAttribute('type', 'button');
-                child2.setAttribute('onclick', "forward()");
-                child2.setAttribute('id', 'forward');
-                var child2Text = document.createTextNode('>');
-                child2.appendChild(child2Text);
-
-                var parent = byId('advanced-2').parentNode;
-                var sibling = byId('advanced-2');
-
-                parent.insertBefore(child1, sibling);
-                parent.insertBefore(child2, sibling);
-
-            }
-        } else {
-            byId('advanced-2').innerHTML = "<div class='loader'></div>"
-        }
-    };
+        };
+    } catch (err) {
+        byId('advanced-2').innerHTML = "Error message: " + err.message;
+    }
     //I was getting CORS errors trying to call the API, so I'm just using a proxy to do the calls now
     xmlhttp.open("GET", 'https://cors-anywhere.herokuapp.com/http://api.walmartlabs.com/v1/search?apiKey=vkyhkt2h8gum2y6bx92yreea&query=' + searchVar + '&numItems=5&start=' + startAt, true);
     xmlhttp.send();
@@ -265,7 +279,7 @@ function addNewItem() {
         return false;
     }
 
-    if(isNaN(itemPrice)){
+    if (isNaN(itemPrice)) {
         byId('itemPrice').classList.add('invalid');
         return false;
     }
@@ -280,8 +294,8 @@ function addNewItem() {
 
     if (itemLink == null || itemLink == "") {
         itemLink = "<a href='.'>No link was added</a>";
-    }else{
-        itemLink = "<a href="+itemLink+">Link to Item</a>"
+    } else {
+        itemLink = "<a href=" + itemLink + " target='_blank'>Link to Item</a>"
     }
 
     if (itemId == null || itemId == "") {
@@ -308,9 +322,9 @@ function addNewItem() {
 function buildListItem(itemId, name, salePrice, thumbnailImage, itemDescription, itemLink) {
     var listItem;
     if ((typeof itemLink !== "undefined")) {
-        listItem = '<div class="col-3"><p><span class="my-handle">☰</span>' + itemId + '</p></div><div class="col-2"><p>' + name + '</p></div><div class="col-3 center"><p>$<span  class="itemPrice">' + salePrice + '</span></p></div><div class="col-3 center"><img style="max-height:50px;" src="' + thumbnailImage + '"></div><div class="col-1">' + itemLink + '</div><div class="col-1"><button class="deleteButton">Delete</button><button class="purchasedButton">Mark as Purchased</button></div><span class="tooltiptext">' + itemDescription + '</span>';
+        listItem = '<div class="col-3"><p><span class="my-handle">☰</span>' + itemId + '</p></div><div class="col-4"><p>' + name + '</p></div><div class="col-3 center"><p>$<span  class="itemPrice">' + salePrice.toFixed(2) + '</span></p></div><div class="col-3 center"><img style="max-height:50px;" src="' + thumbnailImage + '"></div><div class="col-1">' + itemLink + '</div><div class="col-1"><button class="deleteButton">Delete</button><button class="purchasedButton">Mark as Purchased</button></div><span class="tooltiptext">' + itemDescription + '</span>';
     } else {
-        listItem = '<li class="tooltip row"><div class="col-3"><p><span class="my-handle">☰</span>' + itemId + '</p></div><div class="col-2"><p>' + name + '</p></div><div class="col-3 center"><p>$<span  class="itemPrice">' + salePrice + '</span></p></div><div class="col-3 center"><img style="max-height:50px;" src="' + thumbnailImage + '"></div><div class="col-1"><button class="deleteButton">Delete</button><button class="purchasedButton">Mark as Purchased</button></div><span class="tooltiptext">' + itemDescription + '</span></li>';
+        listItem = '<li class="tooltip row"><div class="col-3"><p><span class="my-handle">☰</span>' + itemId + '</p></div><div class="col-4"><p>' + name + '</p></div><div class="col-3 center"><p>$<span  class="itemPrice">' + salePrice.toFixed(2) + '</span></p></div><div class="col-3 center"><img style="max-height:50px;" src="' + thumbnailImage + '"></div><div class="col-1"><button class="deleteButton">Delete</button><button class="purchasedButton">Mark as Purchased</button></div><span class="tooltiptext">' + itemDescription + '</span></li>';
     }
 
 

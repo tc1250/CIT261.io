@@ -9,35 +9,28 @@ button {
 .header, .footer {
     background: rgba(0, 0, 0, 0.5);
     color: #f1f1f1;
-    z-index: 10;
+    z-index: -1;
 }
 
 .header {
     position: fixed;
     top: 0;
+    right:0;
     left: 0;
     width: 100%;
-    min-height:45px;
 }
 
 .footer {
     position: fixed;
     bottom: 0;
     left: 0;
+    right:0;
     width: 100%;
-    padding: 20px;
+    padding: 1rem;
 }
 
-body {
-    min-height: 400px;
-    margin-bottom: 100px;
-    clear: both;
-}
-
-.my-handle {
-    cursor: move;
-    cursor: -webkit-grabbing;
-    padding-right: 5px;
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 li {
@@ -46,7 +39,7 @@ li {
 }
 
 #list, #search {
-    top: 115px;
+    float: left;
     min-height: 40%;
     width: 80%;
     border: 1px solid #888;
@@ -57,7 +50,6 @@ li {
 }
 
 #search {
-    /* position:absolute; */
     background-color: #fefefe;
     display: none;
 }
@@ -103,20 +95,6 @@ ul {
 li {
     padding: 10px 40px;
     margin: 10px;
-}
-
-.grid {
-    display: grid;
-    /*grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));*/
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
-    background-color: #2196F3;
-    padding: 10px;
-}
-
-.wide {
-    grid-column-start: 1;
-    grid-column-end: 5;
 }
 
 #flex {
@@ -417,4 +395,19 @@ input#un-mute:checked~.unmute img {
 
 input#un-mute:checked~.mute img {
     display: initial;
+}
+
+@media screen and (max-width: 800px) {
+    #list, #search, .col-1, .col-2, .col-3, .col-4 {
+        width: 100%;
+    }
+    #flex {
+        display: inline-block;
+    }
+    h6 {
+        font-size: 5vw;
+    }
+    p {
+        font-size: 2vw;
+    }
 }

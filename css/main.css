@@ -60,7 +60,8 @@ body {
 
 .col-1,
 .col-2,
-.col-3 {
+.col-3,
+.col-4 {
     min-height: 1px;
     padding-left: 5px;
     padding-right: 5px;
@@ -69,7 +70,8 @@ body {
 
 .col-1,
 .col-2,
-.col-3 {
+.col-3,
+.col-4 {
     float: left;
 }
 .col-1{
@@ -81,6 +83,9 @@ body {
 
 .col-3 {
     width: 16%;
+}
+.col-4{
+    width:45%;
 }
 
 .skilled {
