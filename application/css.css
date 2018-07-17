@@ -20,19 +20,6 @@ button {
     width: 100%;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right:0;
-    width: 100%;
-    padding: 1rem;
-}
-
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
 li {
     cursor: move;
     cursor: -webkit-grabbing;
@@ -226,6 +213,11 @@ input[type=text], select {
 .tooltip {
     display: block;
     border: 1px solid #888;
+    transition: transform .2s;    
+}
+
+.tooltip:hover{
+    transform:scale(1.01);
 }
 
 .tooltip .tooltiptext {
